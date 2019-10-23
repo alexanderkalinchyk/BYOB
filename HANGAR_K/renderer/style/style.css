@@ -4,7 +4,9 @@ html {
     box-sizing: border-box;
 }
 
-*,
+*{
+    cursor: none;
+},
 *::before,
 *::after {
     box-sizing: inherit;
@@ -17,8 +19,6 @@ body {
 #c {
     width: 100vw;
     height: 100vh;
-    position: relative;
-    z-index: -1;
 }
 
 .container {
@@ -32,4 +32,11 @@ body {
 
 #raam {
     position: absolute;
+}
+
+.ball{
+    height: 20rem;
+    width: 20rem;
+    background-color: blue;
+    border-radius: 50%;
 }

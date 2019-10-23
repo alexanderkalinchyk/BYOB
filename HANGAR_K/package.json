@@ -1,15 +1,19 @@
 {
-  "name": "HANGAR_K",
+  "name": "hazardk",
   "version": "1.0.0",
-  "description": "",
+  "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "rebuild": "electron-rebuild ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^6.0.0",
+    "electron-rebuild": "^1.8.6"
+  },
   "dependencies": {
-    "electron": "^7.0.0"
+    "osc": "^2.3.1"
   }
 }
