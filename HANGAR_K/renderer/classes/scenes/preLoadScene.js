@@ -16,6 +16,16 @@ class PreloadScene extends Phaser.Scene {
       "./renderer/assets/normalmap.png"
     ]);
 
+    this.load.image("cursor", "./renderer/assets/cursor.png");
+
+    this.load.video(
+      "raam1",
+      "./renderer/assets/raam1.mp4",
+      "loadeddata",
+      false,
+      false
+    );
+
     //this.load.image("atari", "assets/sprites/atari400.png");
 
     this.progressBox = this.add.graphics();
