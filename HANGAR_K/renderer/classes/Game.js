@@ -6,8 +6,8 @@ class Game extends Phaser.Game {
   constructor() {
     super({
       type: Phaser.AUTO,
-      width: 1226,
-      height: 189,
+      width: 3840,
+      height: 1080,
       title: `Hazard K`,
       scene: [PreloadScene, StartScene],
       url: `http://www.devine.be`,

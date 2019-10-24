@@ -18,11 +18,47 @@ class PreloadScene extends Phaser.Scene {
 
     this.load.image("cursor", "./renderer/assets/cursor.png");
 
-    this.load.image("window", "./renderer/assets/window.png");
+    this.load.image("raam1", "./renderer/assets/raam1.png");
+    this.load.image("raam2", "./renderer/assets/raam2.png");
+    this.load.image("raam3", "./renderer/assets/raam3.png");
+    this.load.image("raam4", "./renderer/assets/raam4.png");
+    this.load.image("deur", "./renderer/assets/deur.png");
 
     this.load.video(
       "raam1",
       "./renderer/assets/raam1.mp4",
+      "loadeddata",
+      false,
+      false
+    );
+
+    this.load.video(
+      "raam2",
+      "./renderer/assets/raam2.mp4",
+      "loadeddata",
+      false,
+      false
+    );
+
+    this.load.video(
+      "raam3",
+      "./renderer/assets/raam3.mp4",
+      "loadeddata",
+      false,
+      false
+    );
+
+    this.load.video(
+      "raam4",
+      "./renderer/assets/raam4.mp4",
+      "loadeddata",
+      false,
+      false
+    );
+
+    this.load.video(
+      "deur",
+      "./renderer/assets/deur.mp4",
       "loadeddata",
       false,
       false
