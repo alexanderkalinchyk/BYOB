@@ -1,4 +1,4 @@
-//const osc = require("osc");
+const osc = require("osc");
 
 const Cursor = require("../objects/Cursor.js");
 const Window = require("../objects/Window.js");
@@ -8,7 +8,8 @@ class StartScene extends Phaser.Scene {
     super({
       key: `start`
     });
-    this.lightSize = 150;
+
+    this.radius = 150;
   }
 
   create() {
@@ -20,6 +21,7 @@ class StartScene extends Phaser.Scene {
       .setScale(1);
 
     mansion.setPipeline("Light2D");
+
     this.createLight();
     this.createWindow1();
     this.createWindowbox();
@@ -27,18 +29,21 @@ class StartScene extends Phaser.Scene {
 
     this.createCollideWindow();
 
-    // const udpPort = new osc.UDPPort({
-    //   localAddress: "0.0.0.0",
-    //   localPort: 1234
-    // });
+    this.udpPort = new osc.UDPPort({
+      localAddress: "0.0.0.0",
+      localPort: 1234
+    });
 
-    // udpPort.on("message", function(oscMessage) {
-    //   //console.log(oscMessage.args[2]);
+    this.udpPort.on("message", oscMessage => {
+      console.log(oscMessage.args);
+      // this.light.x = map_range(oscMessage.args[0], 0, 1, 0, 1226);
+      // this.light.y = map_range(oscMessage.args[1], 0, 1, 0, 189);
 
-    //   light.x = (oscMessage.args[0] / 1) * 1226;
-    //   light.y = 189 / 2;
-    //   //console.log(map_range(oscMessage.args[0], 0, 1, 0, 189));
-    // });
+      // this.cursor.x = map_range(oscMessage.args[0], 0, 1, 0, 1226);
+      // this.cursor.y = map_range(oscMessage.args[1], 0, 1, 0, 189);
+
+      // console.log(map_range(oscMessage.args[1], 0, 1, 0, 189));
+    });
 
     this.input.on("pointermove", pointer => {
       this.light.x = pointer.x;
@@ -48,18 +53,18 @@ class StartScene extends Phaser.Scene {
       this.cursor.y = pointer.y;
     });
 
-    // udpPort.open();
+    this.udpPort.open();
   }
 
   createLight() {
     this.light = this.lights
-      .addLight(180, 20, this.lightSize)
+      .addLight(180, 20, this.radius)
       .setColor(0xfcfccc)
-      .setIntensity(2);
+      .setIntensity(3);
   }
 
   createCursor() {
-    this.cursor = new Cursor(this, 0, 0);
+    this.cursor = new Cursor(this, 0, 0, 1);
     this.cursor.physicsBodyType = Phaser.Physics.ARCADE;
     this.cursor.checkWorldBounds = true;
     this.cursor.body.moves = false;
@@ -83,6 +88,14 @@ class StartScene extends Phaser.Scene {
   hitBox() {
     this.window.destroy();
     this.window1.play().setLoop(true);
+    this.tweens.add({
+      targets: this.cursor,
+      scale: { from: 1, to: 2 },
+      ease: "linear",
+      duration: 200,
+      repeat: 0,
+      yoyo: false
+    });
   }
 
   update() {}

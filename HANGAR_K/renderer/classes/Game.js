@@ -10,7 +10,6 @@ class Game extends Phaser.Game {
       height: 189,
       title: `Hazard K`,
       scene: [PreloadScene, StartScene],
-      //scene: [TestScene],
       url: `http://www.devine.be`,
       version: `1.0`,
       physics: {

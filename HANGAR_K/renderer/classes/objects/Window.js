@@ -6,7 +6,7 @@ class Window extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
     this.enableBody = true;
     this.setCollideWorldBounds(true);
-    this.setScale(2.5);
+    this.setScale(0.1);
   }
 }
 
