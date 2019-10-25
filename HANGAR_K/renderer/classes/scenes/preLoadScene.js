@@ -16,13 +16,17 @@ class PreloadScene extends Phaser.Scene {
       "./renderer/assets/normalmap.png"
     ]);
 
+    this.load.audio("scary", "./renderer/assets/sounds/scary.m4a");
     this.load.image("cursor", "./renderer/assets/cursor.png");
 
+    this.load.image("raam", "./renderer/assets/raam.png");
     this.load.image("raam1", "./renderer/assets/raam1.png");
     this.load.image("raam2", "./renderer/assets/raam2.png");
     this.load.image("raam3", "./renderer/assets/raam3.png");
     this.load.image("raam4", "./renderer/assets/raam4.png");
     this.load.image("deur", "./renderer/assets/deur.png");
+
+    this.load.video("mansionvid", "./renderer/assets/mansion.webm");
 
     this.load.video(
       "raam1",
@@ -64,12 +68,6 @@ class PreloadScene extends Phaser.Scene {
       false
     );
 
-    //this.load.image("atari", "assets/sprites/atari400.png");
-
-    this.progressBox = this.add.graphics();
-    this.progressBox.fillStyle(0x222222, 0.8);
-    this.progressBox.fillRect(240, 270, 320, 50);
-
     this.width = this.cameras.main.width;
     this.height = this.cameras.main.height;
     this.loadingText = this.make.text({
@@ -109,8 +107,6 @@ class PreloadScene extends Phaser.Scene {
   onProgress(value) {
     this.percentText.setText(`${parseInt(value * 100)}%`);
     this.preloader.clear();
-    this.preloader.fillStyle(0xfffff, 1);
-    this.preloader.fillRect(250, 280, 300 * value, 30);
   }
 
   fileProgress(file) {
